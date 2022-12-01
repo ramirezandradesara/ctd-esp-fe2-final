@@ -5,10 +5,8 @@
 import '@testing-library/jest-dom/extend-expect';
 
 import { server } from "./__test__/mocks/server";
-// antes de todas las pruebas el servidor escucha
 beforeAll(() => server.listen()); 
 
 afterEach(() => server.resetHandlers()); 
 
-// Clean up after the tests are finished.
 afterAll(() => server.close());

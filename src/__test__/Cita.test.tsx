@@ -1,7 +1,6 @@
 import { render, renderHook, act, fireEvent, screen, waitFor } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import Cita from '../features/quote/Cita'
-import { FunctionComponent } from "react";
 import { Provider } from "react-redux";
 import { store } from '../app/store'
 import userEvent from "@testing-library/user-event";
@@ -75,27 +74,27 @@ describe("Pruebas en <Cita />", () => {
         // expect(input).toBeInTheDocument();
         // expect(input.value).toMatch('Homer');
 
-        await userEvent.clear(input);
-
         act(() => {
             fireEvent.change(input, { target: { value: 'Homer' } })
             fireEvent.click(btnCita)
         });
 
-        render(
-            <Provider store={store}>
-                <Cita />
-            </Provider>
-        );
 
+        // expect( screen.queryByText("CARGANDO...")).toBeInTheDocument();
+        // expect(await screen.queryByText('Por favor ingrese un nombre válido')).toBeInTheDocument();
+        // expect(textoError).toBeInTheDocument();
+
+        // expect(getByText('Por favor ingrese un nombre válido')).toBeInTheDocument();
         await waitFor(() => {
-            const textoError = screen.queryByText('Por favor ingrese un nombre válido')
-            expect(textoError).toBeInTheDocument();
-
-            // expect(getByText('Por favor ingrese un nombre válido')).toBeInTheDocument();
-
-        });
+            const textoError = screen.findByText('Por favor ingrese un nombre válido')
+            waitFor(() => {
+                expect(textoError).toBeInTheDocument();
+            })
+        })
 
     });
 
+    test("Mostrar mensaje de cargando", () => {
+        expect(component.container).toBeInTheDocument();
+    });
 });

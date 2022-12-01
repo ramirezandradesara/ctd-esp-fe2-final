@@ -1,6 +1,9 @@
 import { useEffect, useState } from "react";
 import { SuscribeImage, CloseButton as Close } from "../../assets";
 import { obtenerNoticias } from "./fakeRest";
+import { INoticiasNormalizadas } from './types/news.types'
+import { eachWordToUppercase } from "./helpers/eachWordToUppercase";
+import { minutesElapsed } from "./helpers/minutesElapsed";
 import {
   CloseButton,
   TarjetaModal,
@@ -21,15 +24,15 @@ import {
   CotenedorTexto,
 } from "./styled";
 
-export interface INoticiasNormalizadas {
-  id: number;
-  titulo: string;
-  descripcion: string;
-  fecha: number | string;
-  esPremium: boolean;
-  imagen: string;
-  descripcionCorta?: string;
-}
+// export interface INoticiasNormalizadas {
+//   id: number;
+//   titulo: string;
+//   descripcion: string;
+//   fecha: number | string;
+//   esPremium: boolean;
+//   imagen: string;
+//   descripcionCorta?: string;
+// }
 
 const Noticias = () => {
   const [noticias, setNoticias] = useState<INoticiasNormalizadas[]>([]);
@@ -40,23 +43,23 @@ const Noticias = () => {
       const respuesta = await obtenerNoticias();
 
       const data = respuesta.map((n) => {
-        const titulo = n.titulo
-          .split(" ")
-          .map((str) => {
-            return str.charAt(0).toUpperCase() + str.slice(1);
-          })
-          .join(" ");
+        // const titulo = n.titulo
+        //   .split(" ")
+        //   .map((str) => {
+        //     return str.charAt(0).toUpperCase() + str.slice(1);
+        //   })
+        //   .join(" ");
 
-        const ahora = new Date();
-        const minutosTranscurridos = Math.floor(
-          (ahora.getTime() - n.fecha.getTime()) / 60000
-        );
+        // const ahora = new Date();
+        // const minutosTranscurridos = Math.floor(
+        //   (ahora.getTime() - n.fecha.getTime()) / 60000
+        // );
 
         return {
           id: n.id,
-          titulo,
+          titulo: eachWordToUppercase(n.titulo),
           descripcion: n.descripcion,
-          fecha: `Hace ${minutosTranscurridos} minutos`,
+          fecha: `Hace ${minutesElapsed(n.fecha)} minutos`,
           esPremium: n.esPremium,
           imagen: n.imagen,
           descripcionCorta: n.descripcion.substring(0, 100),

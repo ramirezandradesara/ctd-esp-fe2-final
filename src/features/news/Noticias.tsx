@@ -1,9 +1,6 @@
 import { useEffect, useState } from "react";
 import { SuscribeImage, CloseButton as Close } from "../../assets";
-import { obtenerNoticias } from "./fakeRest";
 import { INoticiasNormalizadas } from './types/news.types'
-import { eachWordToUppercase } from "./helpers/eachWordToUppercase";
-import { minutesElapsed } from "./helpers/minutesElapsed";
 import {
   CloseButton,
   TarjetaModal,
@@ -23,60 +20,42 @@ import {
   BotonSuscribir,
   CotenedorTexto,
 } from "./styled";
+import { useNews } from "./hooks/useNews";
 
-// export interface INoticiasNormalizadas {
-//   id: number;
-//   titulo: string;
-//   descripcion: string;
-//   fecha: number | string;
-//   esPremium: boolean;
-//   imagen: string;
-//   descripcionCorta?: string;
-// }
-
-const Noticias = () => {
-  const [noticias, setNoticias] = useState<INoticiasNormalizadas[]>([]);
+ const Noticias = () => {
+  // const [noticias, setNoticias] = useState<INoticiasNormalizadas[]>([]);
   const [modal, setModal] = useState<INoticiasNormalizadas | null>(null);
 
-  useEffect(() => {
-    const obtenerInformacion = async () => {
-      const respuesta = await obtenerNoticias();
+  const noticias = useNews()
 
-      const data = respuesta.map((n) => {
-        // const titulo = n.titulo
-        //   .split(" ")
-        //   .map((str) => {
-        //     return str.charAt(0).toUpperCase() + str.slice(1);
-        //   })
-        //   .join(" ");
+  // useEffect(() => {
+  //   const obtenerInformacion = async () => {
+  //     const respuesta = await obtenerNoticias();
 
-        // const ahora = new Date();
-        // const minutosTranscurridos = Math.floor(
-        //   (ahora.getTime() - n.fecha.getTime()) / 60000
-        // );
+  //     const data = respuesta.map((n) => {
 
-        return {
-          id: n.id,
-          titulo: eachWordToUppercase(n.titulo),
-          descripcion: n.descripcion,
-          fecha: `Hace ${minutesElapsed(n.fecha)} minutos`,
-          esPremium: n.esPremium,
-          imagen: n.imagen,
-          descripcionCorta: n.descripcion.substring(0, 100),
-        };
-      });
+  //       return {
+  //         id: n.id,
+  //         titulo: eachWordToUppercase(n.titulo),
+  //         descripcion: n.descripcion,
+  //         fecha: `Hace ${minutesElapsed(n.fecha)} minutos`,
+  //         esPremium: n.esPremium,
+  //         imagen: n.imagen,
+  //         descripcionCorta: n.descripcion.substring(0, 100),
+  //       };
+  //     });
 
-      setNoticias(data);
-    };
+  //     setNoticias(data);
+  //   };
 
-    obtenerInformacion();
-  }, []);
+  //   obtenerInformacion();
+  // }, []);
 
   return (
     <ContenedorNoticias>
       <TituloNoticias>Noticias de los Simpsons</TituloNoticias>
       <ListaNoticias>
-        {noticias.map((n) => (
+        {noticias?.map((n:INoticiasNormalizadas) => (
           <TarjetaNoticia>
             <ImagenTarjetaNoticia src={n.imagen} />
             <TituloTarjetaNoticia>{n.titulo}</TituloTarjetaNoticia>

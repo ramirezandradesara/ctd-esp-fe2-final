@@ -5,7 +5,6 @@ import { Provider } from "react-redux";
 import { store } from '../app/store'
 import userEvent from "@testing-library/user-event";
 
-
 describe("Pruebas en <Cita />", () => {
 
     let component = render(

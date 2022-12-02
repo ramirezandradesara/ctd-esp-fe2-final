@@ -21,11 +21,13 @@ import {
   CotenedorTexto,
 } from "./styled";
 import { useNews } from "./hooks/useNews";
+import useModal from "./hooks/useModal";
+import Modal from "./modal/Modal";
 
 const Noticias = () => {
-  const [modal, setModal] = useState<INoticiasNormalizadas | null>(null);
 
   const noticias = useNews()
+  const { modal, setModal } = useModal();
 
   return (
     <ContenedorNoticias>
@@ -40,9 +42,11 @@ const Noticias = () => {
               {n.descripcionCorta}
             </DescripcionTarjetaNoticia>
             <BotonLectura onClick={() => setModal(n)}>Ver más</BotonLectura>
+            {modal && <Modal dataModal={modal} setModal={setModal}/>}
           </TarjetaNoticia>
         ))}
-        {modal ? (
+
+        {/* {modal ? (
           modal.esPremium ? (
             <ContenedorModal>
               <TarjetaModal>
@@ -83,7 +87,7 @@ const Noticias = () => {
               </TarjetaModal>
             </ContenedorModal>
           )
-        ) : null}
+        ) : null} */}
       </ListaNoticias>
     </ContenedorNoticias>
   );

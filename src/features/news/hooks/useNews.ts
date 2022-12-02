@@ -5,26 +5,7 @@ import { formatedData } from "../helpers/formatedData";
 import { minutesElapsed } from "../helpers/minutesElapsed";
 import { INoticiasNormalizadas } from "../types/news.types";
 
-export async function useNews(): Promise<INoticiasNormalizadas[]> {
-
-    // const [noticias, setNoticias] = useState<INoticiasNormalizadas[]>([]);
-
-    //     const respuesta = await obtenerNoticias();
-
-    //     const data = respuesta.map((n) => {
-    //         return {
-    //             id: n.id,
-    //             titulo: eachWordToUppercase(n.titulo),
-    //             descripcion: n.descripcion,
-    //             fecha: `Hace ${minutesElapsed(n.fecha)} minutos`,
-    //             esPremium: n.esPremium,
-    //             imagen: n.imagen,
-    //             descripcionCorta: n.descripcion.substring(0, 100),
-    //         };
-    //     });
-
-    // return noticias;
-
+export  function useNews() {
     const [noticias, setNoticias] = useState<INoticiasNormalizadas[]>([]);
     
     useEffect(() => {

@@ -22,40 +22,16 @@ import {
 } from "./styled";
 import { useNews } from "./hooks/useNews";
 
- const Noticias = () => {
-  // const [noticias, setNoticias] = useState<INoticiasNormalizadas[]>([]);
+const Noticias = () => {
   const [modal, setModal] = useState<INoticiasNormalizadas | null>(null);
 
   const noticias = useNews()
-
-  // useEffect(() => {
-  //   const obtenerInformacion = async () => {
-  //     const respuesta = await obtenerNoticias();
-
-  //     const data = respuesta.map((n) => {
-
-  //       return {
-  //         id: n.id,
-  //         titulo: eachWordToUppercase(n.titulo),
-  //         descripcion: n.descripcion,
-  //         fecha: `Hace ${minutesElapsed(n.fecha)} minutos`,
-  //         esPremium: n.esPremium,
-  //         imagen: n.imagen,
-  //         descripcionCorta: n.descripcion.substring(0, 100),
-  //       };
-  //     });
-
-  //     setNoticias(data);
-  //   };
-
-  //   obtenerInformacion();
-  // }, []);
 
   return (
     <ContenedorNoticias>
       <TituloNoticias>Noticias de los Simpsons</TituloNoticias>
       <ListaNoticias>
-        {noticias?.map((n:INoticiasNormalizadas) => (
+        {noticias?.map((n: INoticiasNormalizadas) => (
           <TarjetaNoticia>
             <ImagenTarjetaNoticia src={n.imagen} />
             <TituloTarjetaNoticia>{n.titulo}</TituloTarjetaNoticia>

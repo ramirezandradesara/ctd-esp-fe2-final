@@ -93,7 +93,15 @@ describe("Pruebas en <Cita />", () => {
 
     });
 
-    test("Mostrar mensaje de cargando", () => {
-        expect(component.container).toBeInTheDocument();
-    });
+    // test("Mostrar mensaje de cargando", () => {
+    //     expect(component.container).toBeInTheDocument();
+    // });
+    
+    // test("Mostrar nombre del personaje ingresado", () => {
+    //     expect(component.container).toBeInTheDocument();
+    // });
+    
+    // test("Mostrar frase del personaje ingresado", () => {
+    //     expect(component.container).toBeInTheDocument();
+    // });
 });

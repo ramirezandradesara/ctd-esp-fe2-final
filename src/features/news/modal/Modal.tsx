@@ -23,7 +23,7 @@ import { SuscribeImage, CloseButton as Close } from "../../../assets";
 
 export interface ModalProps {
     dataModal: INoticiasNormalizadas,
-    setModal(null): any;
+    // setModal(null): any;
 }
   
 function Modal({ dataModal, setModal }: ModalProps) {

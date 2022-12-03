@@ -22,8 +22,8 @@ import { INoticiasNormalizadas } from '../types/news.types';
 import { SuscribeImage, CloseButton as Close } from "../../../assets";
 
 export interface ModalProps {
-    dataModal: INoticiasNormalizadas,
-    // setModal(null): any;
+    dataModal: INoticiasNormalizadas;
+    setModal(): void;
 }
   
 function Modal({ dataModal, setModal }: ModalProps) {

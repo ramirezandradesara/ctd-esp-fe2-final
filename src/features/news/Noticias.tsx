@@ -27,7 +27,7 @@ import Modal from "./modal/Modal";
 const Noticias = () => {
 
   const noticias = useNews()
-  const { modal, setModal } = useModal();
+  const { isShowing, toggle } = useModal();
 
   return (
     <ContenedorNoticias>
@@ -41,8 +41,8 @@ const Noticias = () => {
             <DescripcionTarjetaNoticia>
               {n.descripcionCorta}
             </DescripcionTarjetaNoticia>
-            <BotonLectura onClick={() => setModal(n)}>Ver más</BotonLectura>
-            {modal && <Modal dataModal={modal} setModal={setModal}/>}
+            <BotonLectura onClick={() => toggle()}>Ver más</BotonLectura>
+            {isShowing && <Modal data={n} toggle= {toggle}/>}
           </TarjetaNoticia>
         ))}
 

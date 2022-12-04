@@ -9,7 +9,6 @@ const data = {
 
 const handlers = [
 	rest.get('https://thesimpsonsquoteapi.glitch.me/quotes', (req, res, ctx) => {
-		console.log("here");
 		return res(
 			ctx.status(200),
 			ctx.json({

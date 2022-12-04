@@ -1,4 +1,3 @@
-import React, { useState } from 'react'
 import {
     CloseButton,
     TarjetaModal,
@@ -6,15 +5,6 @@ import {
     DescripcionModal,
     ImagenModal,
     TituloModal,
-    TarjetaNoticia,
-    FechaTarjetaNoticia,
-    DescripcionTarjetaNoticia,
-    ImagenTarjetaNoticia,
-    TituloTarjetaNoticia,
-    ContenedorNoticias,
-    ListaNoticias,
-    TituloNoticias,
-    BotonLectura,
     BotonSuscribir,
     CotenedorTexto,
 } from "../styled";
@@ -23,7 +13,7 @@ import { SuscribeImage, CloseButton as Close } from "../../../assets";
 
 export interface ModalProps {
     modal: INoticiasNormalizadas | null;
-    isOpenModal: (INoticiasNormalizadas | null) => void 
+    isOpenModal: (data:INoticiasNormalizadas | null) => void; 
 };
 
 function Modal({modal, isOpenModal }: ModalProps) {

@@ -22,19 +22,19 @@ import { INoticiasNormalizadas } from '../types/news.types';
 import { SuscribeImage, CloseButton as Close } from "../../../assets";
 
 export interface ModalProps {
-    data: INoticiasNormalizadas;
-    toggle(): void;
+    modal: INoticiasNormalizadas | null;
+    isOpenModal: (INoticiasNormalizadas | null) => void 
 };
 
-function Modal({data, toggle }: ModalProps) {
+function Modal({modal, isOpenModal }: ModalProps) {
 
     return (
         <div>
-            {data ? (
-                data.esPremium
+            {modal ? (
+                modal.esPremium
                     ? (<ContenedorModal>
                         <TarjetaModal>
-                            <CloseButton onClick={() => toggle()}>
+                            <CloseButton onClick={() => isOpenModal(null)}>
                                 <img src={Close} alt="close-button" />
                             </CloseButton>
                             <ImagenModal src={SuscribeImage} alt="mr-burns-excelent" />
@@ -48,7 +48,7 @@ function Modal({data, toggle }: ModalProps) {
                                     onClick={() =>
                                         setTimeout(() => {
                                             alert("Suscripto!");
-                                            toggle();
+                                            isOpenModal(null);
                                         }, 1000)
                                     }>
                                     Suscríbete
@@ -59,13 +59,13 @@ function Modal({data, toggle }: ModalProps) {
                     :
                     (<ContenedorModal>
                         <TarjetaModal>
-                            <CloseButton onClick={() => toggle()}>
+                            <CloseButton onClick={() => isOpenModal(null)}>
                                 <img src={Close} alt="close-button" />
                             </CloseButton>
-                            <ImagenModal src={data.imagen} alt="news-image" />
+                            <ImagenModal src={modal.imagen} alt="news-image" />
                             <CotenedorTexto>
-                                <TituloModal>{data.titulo}</TituloModal>
-                                <DescripcionModal>{data.descripcion}</DescripcionModal>
+                                <TituloModal>{modal.titulo}</TituloModal>
+                                <DescripcionModal>{modal.descripcion}</DescripcionModal>
                             </CotenedorTexto>
                         </TarjetaModal>
                     </ContenedorModal>

@@ -23,11 +23,19 @@ import {
 import { useNews } from "./hooks/useNews";
 import useModal from "./hooks/useModal";
 import Modal from "./modal/Modal";
+import ModalPremium from "./modal/ModalNotPremium";
+import ModalNotPremium from "./modal/ModalNotPremium";
 
 const Noticias = () => {
 
   const noticias = useNews()
-  const { isShowing, toggle } = useModal();
+  const {
+    isShowing,
+    toggle,
+    setModal,
+    modal,
+    isOpenModal
+  } = useModal();
 
   return (
     <ContenedorNoticias>
@@ -41,11 +49,10 @@ const Noticias = () => {
             <DescripcionTarjetaNoticia>
               {n.descripcionCorta}
             </DescripcionTarjetaNoticia>
-            <BotonLectura onClick={() => toggle()}>Ver más</BotonLectura>
-            {isShowing && <Modal data={n} toggle= {toggle}/>}
+            <BotonLectura onClick={() => isOpenModal(n)}>Ver más</BotonLectura>
           </TarjetaNoticia>
         ))}
-
+        {isShowing && <Modal isOpenModal={isOpenModal} modal={modal} />}
         {/* {modal ? (
           modal.esPremium ? (
             <ContenedorModal>

@@ -1,13 +1,5 @@
-import { useEffect, useState } from "react";
-import { SuscribeImage, CloseButton as Close } from "../../assets";
 import { INoticiasNormalizadas } from './types/news.types'
 import {
-  CloseButton,
-  TarjetaModal,
-  ContenedorModal,
-  DescripcionModal,
-  ImagenModal,
-  TituloModal,
   TarjetaNoticia,
   FechaTarjetaNoticia,
   DescripcionTarjetaNoticia,
@@ -17,17 +9,12 @@ import {
   ListaNoticias,
   TituloNoticias,
   BotonLectura,
-  BotonSuscribir,
-  CotenedorTexto,
 } from "./styled";
 import { useNews } from "./hooks/useNews";
 import useModal from "./hooks/useModal";
 import Modal from "./modal/Modal";
-import ModalPremium from "./modal/ModalNotPremium";
-import ModalNotPremium from "./modal/ModalNotPremium";
 
 const Noticias = () => {
-
   const noticias = useNews()
   const { modal, isOpenModal } = useModal();
 
@@ -46,6 +33,7 @@ const Noticias = () => {
             <BotonLectura onClick={() => isOpenModal(n)}>Ver más</BotonLectura>
           </TarjetaNoticia>
         ))}
+
         {modal && <Modal isOpenModal={isOpenModal} modal={modal} />}
       </ListaNoticias>
     </ContenedorNoticias>

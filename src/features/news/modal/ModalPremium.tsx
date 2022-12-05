@@ -1,4 +1,3 @@
-import React from 'react'
 import {
     CloseButton,
     TarjetaModal,
@@ -6,31 +5,18 @@ import {
     DescripcionModal,
     ImagenModal,
     TituloModal,
-    TarjetaNoticia,
-    FechaTarjetaNoticia,
-    DescripcionTarjetaNoticia,
-    ImagenTarjetaNoticia,
-    TituloTarjetaNoticia,
-    ContenedorNoticias,
-    ListaNoticias,
-    TituloNoticias,
-    BotonLectura,
     BotonSuscribir,
     CotenedorTexto,
 } from "../styled";
 import { SuscribeImage, CloseButton as Close } from "../../../assets";
-import { INoticiasNormalizadas } from '../types/news.types';
+import { ModalProps } from '../types/modalProps.types';
 
-export interface ModalProps {
-    data: INoticiasNormalizadas;
-    toggle(): void;
-};
+function ModalPremium({ modal, isOpenModal }: ModalProps) {
 
-function ModalPremium({data, toggle }: ModalProps) {
     return (
         <ContenedorModal>
             <TarjetaModal>
-                <CloseButton onClick={() => toggle()}>
+                <CloseButton onClick={() => isOpenModal(null)}>
                     <img src={Close} alt="close-button" />
                 </CloseButton>
                 <ImagenModal src={SuscribeImage} alt="mr-burns-excelent" />
@@ -44,7 +30,7 @@ function ModalPremium({data, toggle }: ModalProps) {
                         onClick={() =>
                             setTimeout(() => {
                                 alert("Suscripto!");
-                                toggle();
+                                isOpenModal(null);
                             }, 1000)
                         }>
                         Suscríbete
@@ -52,7 +38,7 @@ function ModalPremium({data, toggle }: ModalProps) {
                 </CotenedorTexto>
             </TarjetaModal>
         </ContenedorModal>
-  )
-}
+    )
+};
 
 export default ModalPremium

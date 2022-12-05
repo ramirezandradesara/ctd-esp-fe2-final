@@ -36,12 +36,13 @@ function Cita() {
         placeholder="Ingresa el nombre del autor"
       />
       <Boton
+        data-testid="quote-button"
         aria-label={valorInput ? "Obtener Cita" : "Obtener cita aleatoria"}
         onClick={onClickObtenerCita}
       >
         {valorInput ? "Obtener Cita" : "Obtener cita aleatoria"}
       </Boton>
-      <Boton aria-label="Borrar" onClick={onClickBorrar} secondary={true}>
+      <Boton  data-testid="clean-button" aria-label="Borrar" onClick={onClickBorrar} secondary={true}>
         Borrar
       </Boton>
     </ContenedorCita>

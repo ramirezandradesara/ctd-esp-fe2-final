@@ -4,15 +4,8 @@ import Cita from '../features/quote/Cita'
 import { Provider } from "react-redux";
 import { store } from '../app/store'
 import userEvent from "@testing-library/user-event";
-import { customRender } from '../test-utils'
 
 describe("Pruebas en <Cita />", () => {
-
-    const setup = () => customRender(
-        <Provider store={store}>
-            <Cita />
-        </Provider>
-    );
 
     test("Renderizado inicial", () => {
         let component = render(
@@ -23,30 +16,30 @@ describe("Pruebas en <Cita />", () => {
 
         expect(component.container).toBeInTheDocument();
     });
-    
+
 
     test("Renderizado inicial sin cita", async () => {
-        const { getByText } = render(
+        render(
             <Provider store={store}>
                 <Cita />
             </Provider>
         );
-        expect(getByText('No se encontro ninguna cita')).toBeInTheDocument();
+        expect(screen.getByText('No se encontro ninguna cita')).toBeInTheDocument();
     });
-    
 
-    test("Mostrar mensaje de cargando", () => {
-        const { getByText, container } = render(
+
+    test("Mostrar mensaje de cargando", async () => {
+        render(
             <Provider store={store}>
                 <Cita />
             </Provider>
         );
+        // const onChange = jest.fn()
         const btnAleatorio = screen.getByText("Obtener cita aleatoria")
-
         expect(btnAleatorio).toBeEnabled();
-        fireEvent.click(btnAleatorio)
 
-        expect(getByText('CARGANDO...')).toBeInTheDocument();
+        userEvent.click(btnAleatorio)
+        await waitFor(() => expect(screen.getByText('CARGANDO...')).toBeInTheDocument())
     });
 
 
@@ -61,30 +54,29 @@ describe("Pruebas en <Cita />", () => {
 
         expect(input).toBeInTheDocument();
 
-        fireEvent.change(input, { target: { value: 'Homer' } })
+        userEvent.type(input, "Lisa")
 
-        await waitFor(() => expect(screen.findByText("Homer Simpson")))
+        await waitFor(() => expect(screen.findByText("Lisa Simpson'")))
+        await waitFor(() => expect(screen.findByText("Shut up, brain. I got friends now. I don't need you anymore.")))
     });
 
 
     test("Mensaje error al ingresar números", async () => {
-        setup()
+        render(
+            <Provider store={store}>
+                <Cita />
+            </Provider>
+        );
 
         const input = await screen.findByPlaceholderText('Ingresa el nombre del autor')
-        const btnCita = await screen.findByLabelText('Obtener cita aleatoria')
+        const btnCita = screen.getByTestId("quote-button")
 
-        act(() => {
-            fireEvent.change(input, { target: { value: 'Homer' } })
-            fireEvent.click(btnCita)
-        });
+        userEvent.type(input, "lisa")
+        userEvent.click(btnCita)
 
         await waitFor(() => {
-            const textoError = screen.findByText('Por favor ingrese un nombre válido')
-            waitFor(() => {
-                expect(screen.findByText('Por favor ingrese un nombre válido')).toBeInTheDocument();
-            })
+            expect(screen.getByText('Por favor ingrese un nombre válido')).toBeInTheDocument();
         })
-
     });
 
 
@@ -96,17 +88,19 @@ describe("Pruebas en <Cita />", () => {
         );
 
         const input = screen.getByPlaceholderText('Ingresa el nombre del autor');
-        const btnBorrar = screen.getByText("Borrar");
-        
+        // const btnBorrar = screen.getByText("Borrar");
+        const btnCita = screen.getByTestId("quote-button")
+        const btnBorrar = screen.getByTestId("clean-button")
+
         expect(input).toBeInTheDocument();
 
-        fireEvent.change(input, { target: { value: 'Homer' } })
+        userEvent.type(input, 'Homer')
+        userEvent.click(btnCita)
 
         await waitFor(() => expect(screen.findByText("Homer Simpson")))
 
-        fireEvent.click(btnBorrar)
+        userEvent.click(btnBorrar)
 
         await waitFor(() => expect(screen.findByText("No se encontro ninguna cita")))
     });
-
 });

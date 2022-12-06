@@ -1,4 +1,4 @@
-import { render, act, fireEvent, screen, waitFor } from "@testing-library/react";
+import { act, fireEvent, screen, waitFor } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import Cita from '../features/quote/Cita'
 import userEvent from "@testing-library/user-event";
@@ -6,10 +6,10 @@ import { customRender } from '../test-utils'
 
 describe("Pruebas en <Cita />", () => {
 
-    let renderComponent = () =>  customRender(<Cita />)
+    let renderComponent = () => customRender(<Cita />)
 
     test("Renderizado inicial sin cita", async () => {
-        renderComponent()
+        renderComponent();
 
         expect(screen.getByText('No se encontro ninguna cita')).toBeInTheDocument();
     });
@@ -18,59 +18,58 @@ describe("Pruebas en <Cita />", () => {
     test("Mostrar mensaje de cargando", async () => {
         renderComponent()
 
-        const btnAleatorio = screen.getByText("Obtener cita aleatoria")
+        const btnAleatorio = screen.getByText("Obtener cita aleatoria");
         expect(btnAleatorio).toBeEnabled();
 
-        userEvent.click(btnAleatorio)
-        await waitFor(() => expect(screen.getByText('CARGANDO...')).toBeInTheDocument())
+        userEvent.click(btnAleatorio);
+        const loading = await screen.findByText('CARGANDO...');
+        expect(loading).toBeInTheDocument();
     });
 
 
     test("Mostrar cita y nombre del personaje ingresado", async () => {
-        renderComponent()
+        renderComponent();
 
-        const input = screen.getByPlaceholderText('Ingresa el nombre del autor')
+        const input = screen.getByPlaceholderText('Ingresa el nombre del autor');
 
         expect(input).toBeInTheDocument();
 
-        userEvent.type(input, "Lisa")
+        userEvent.type(input, "Lisa");
 
-        await waitFor(() => expect(screen.findByText("Lisa Simpson")))
-        await waitFor(() => expect(screen.findByText("Shut up, brain. I got friends now. I don't need you anymore.")))
+        await waitFor(() => expect(screen.queryByText("Lisa Simpson")));
+        await waitFor(() => expect(screen.queryByText("Shut up, brain. I got friends now. I don't need you anymore.")));
     });
 
 
     test("Mensaje error al ingresar números", async () => {
         renderComponent()
 
-        const input = await screen.findByPlaceholderText('Ingresa el nombre del autor')
-        const btnCita = screen.getByTestId("quote-button")
+        const input = await screen.findByPlaceholderText('Ingresa el nombre del autor');
+        const btnCita = screen.getByTestId("quote-button");
 
-        userEvent.type(input, "1233")
-        userEvent.click(btnCita)
-        
+        userEvent.type(input, "1233");
+        userEvent.click(btnCita);
+
         await waitFor(() => {
             expect(screen.getByText('Por favor ingrese un nombre válido')).toBeInTheDocument();
         })
     });
 
 
-    test("Correcto funcionamiento del botón 'Borrar' ", async () => {
+    test("Correcto funcionamiento del botón 'Borrar'", async () => {
         renderComponent()
 
         const input = screen.getByPlaceholderText('Ingresa el nombre del autor');
-        const btnCita = screen.getByTestId("quote-button")
-        const btnBorrar = screen.getByTestId("clean-button")
+        const btnBorrar = screen.getByText("Borrar");
+        const btnCita = screen.getByTestId("quote-button");
 
-        expect(input).toBeInTheDocument();
+        userEvent.type(input, 'Homer');
+        userEvent.click(btnCita);
 
-        userEvent.type(input, 'Homer')
-        userEvent.click(btnCita)
+        await waitFor(() => expect(screen.queryByText("Ingresa el nombre del autor")).not.toBeInTheDocument());
 
-        await waitFor(() => expect(screen.findByText("Homer Simpson")))
+        fireEvent.click(btnBorrar);
 
-        userEvent.click(btnBorrar)
-
-        await waitFor(() => expect(screen.findByText("No se encontro ninguna cita")))
+        await waitFor(() => expect(screen.queryByText("Ingresa el nombre del autor")));
     });
 });

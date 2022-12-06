@@ -1,0 +1,16 @@
+import { act, fireEvent, screen, waitFor } from "@testing-library/react";
+import "@testing-library/jest-dom";
+import Noticias from '../features/news/Noticias'
+import userEvent from "@testing-library/user-event";
+import { customRender } from '../test-utils'
+
+describe("Pruebas en <Cita />", () => {
+
+    let renderComponent = () => customRender(<Noticias />)
+
+    test("Renderizado inicial con título", async () => {
+        renderComponent();
+
+        expect(screen.getByText('Noticias de los Simpsons')).toBeInTheDocument();
+    });
+});

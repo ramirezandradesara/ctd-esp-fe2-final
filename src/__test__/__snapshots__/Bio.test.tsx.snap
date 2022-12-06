@@ -1,0 +1,63 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Pruebas en <Cita /> Snapshot de <Noticias /> 1`] = `
+<DocumentFragment>
+  <div
+    class="sc-bcXHqe cIkhMV"
+  >
+    <div
+      class="sc-dkrFOg gkXnjm"
+    >
+      <button
+        class="sc-jSUZER cwGpdH"
+      >
+        BART
+      </button>
+      <button
+        class="sc-jSUZER evzLtq"
+      >
+        HOMERO
+      </button>
+      <button
+        class="sc-jSUZER evzLtq"
+      >
+        LISA
+      </button>
+      <button
+        class="sc-jSUZER evzLtq"
+      >
+        MAGGIE
+      </button>
+      <button
+        class="sc-jSUZER evzLtq"
+      >
+        MARGE
+      </button>
+    </div>
+    <div>
+      <div>
+        <img
+          alt="Bart Simpson"
+          class="sc-gswNZR ctOybF"
+          src="bart.png"
+        />
+      </div>
+      <div>
+        <h3
+          class="sc-hLBbgP dTlAVl"
+        >
+          Bart Simpson
+        </h3>
+        <p
+          class="sc-eDvSVe gzgjHl"
+        >
+          A los diez años, Bart es el hijo mayor y único varón de Homero y Marge,
+    y el hermano de Lisa y Maggie.
+    Los rasgos de carácter más prominentes y populares de Bart son su picardía,
+    rebeldía y falta de respeto a la autoridad.
+        </p>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;

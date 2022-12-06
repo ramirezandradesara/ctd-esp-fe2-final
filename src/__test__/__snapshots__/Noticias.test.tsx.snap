@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Pruebas en <Cita /> Snapshot de <Noticias /> 1`] = `
+<DocumentFragment>
+  <div
+    class="sc-bcXHqe dTSoUE"
+  >
+    <h2
+      class="sc-gswNZR jJQjGi"
+    >
+      Noticias de los Simpsons
+    </h2>
+    <div
+      class="sc-dkrFOg eDTxVm"
+    />
+  </div>
+</DocumentFragment>
+`;

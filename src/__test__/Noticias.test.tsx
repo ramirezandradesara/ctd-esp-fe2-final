@@ -13,4 +13,11 @@ describe("Pruebas en <Cita />", () => {
 
         expect(screen.getByText('Noticias de los Simpsons')).toBeInTheDocument();
     });
+
+    test("Snapshot de <Noticias />", async () => {
+        let { asFragment } = customRender(<Noticias />)
+        let fragment = asFragment()
+
+        expect(fragment).toMatchSnapshot();
+    });
 });

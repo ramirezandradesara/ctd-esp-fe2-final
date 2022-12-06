@@ -10,7 +10,7 @@ describe("Pruebas en <Cita />", () => {
 
     test("Renderizado inicial con el nombre y la biografía de Bart Simpson", async () => {
         renderComponent();
-        
+
         const bioBart = "A los diez años, Bart es el hijo mayor y único varón de Homero y Marge, y el hermano de Lisa y Maggie. Los rasgos de carácter más prominentes y populares de Bart son su picardía, rebeldía y falta de respeto a la autoridad.";
 
         expect(screen.getByText('Bart Simpson')).toBeInTheDocument();
@@ -27,5 +27,12 @@ describe("Pruebas en <Cita />", () => {
 
         await waitFor(() => expect(screen.queryByText("Homero Simpson")));
         await waitFor(() => expect(screen.queryByText(bioHomero)));
+    });
+
+    test("Snapshot de <Noticias />", async () => {
+        let { asFragment } = customRender(<Bio />)
+        let fragment = asFragment()
+
+        expect(fragment).toMatchSnapshot();
     });
 });

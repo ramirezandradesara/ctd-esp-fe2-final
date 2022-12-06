@@ -31,10 +31,13 @@ describe("Pruebas en <Cita />", () => {
         renderComponent();
 
         const input = screen.getByPlaceholderText('Ingresa el nombre del autor');
+        const btnCita = screen.getByText(/obtener/i);
 
         expect(input).toBeInTheDocument();
 
         userEvent.type(input, "Lisa");
+        userEvent.click(btnCita);
+
 
         await waitFor(() => expect(screen.queryByText("Lisa Simpson")));
         await waitFor(() => expect(screen.queryByText("Shut up, brain. I got friends now. I don't need you anymore.")));
@@ -45,7 +48,7 @@ describe("Pruebas en <Cita />", () => {
         renderComponent()
 
         const input = await screen.findByPlaceholderText('Ingresa el nombre del autor');
-        const btnCita = screen.getByTestId("quote-button");
+        const btnCita = screen.getByText(/obtener/i);
 
         userEvent.type(input, "1233");
         userEvent.click(btnCita);
@@ -61,7 +64,7 @@ describe("Pruebas en <Cita />", () => {
 
         const input = screen.getByPlaceholderText('Ingresa el nombre del autor');
         const btnBorrar = screen.getByText("Borrar");
-        const btnCita = screen.getByTestId("quote-button");
+        const btnCita = screen.getByText(/obtener/i);
 
         userEvent.type(input, 'Homer');
         userEvent.click(btnCita);
@@ -71,5 +74,12 @@ describe("Pruebas en <Cita />", () => {
         fireEvent.click(btnBorrar);
 
         await waitFor(() => expect(screen.queryByText("Ingresa el nombre del autor")));
+    });
+
+    test("Snapshot de <Noticias />", async () => {
+        let { asFragment } = customRender(<Cita />)
+        let fragment = asFragment()
+
+        expect(fragment).toMatchSnapshot();
     });
 });

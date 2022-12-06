@@ -1,0 +1,38 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Pruebas en <Cita /> Snapshot de <Noticias /> 1`] = `
+<DocumentFragment>
+  <div
+    class="sc-bcXHqe diInxQ"
+  >
+    <p
+      class="sc-gswNZR csjLMD"
+    >
+      No se encontro ninguna cita
+    </p>
+    <p
+      class="sc-dkrFOg jCtzHW"
+      data-testid="character-name"
+    />
+    <input
+      aria-label="Author Cita"
+      class="sc-hLBbgP itHxqV"
+      placeholder="Ingresa el nombre del autor"
+      value=""
+    />
+    <button
+      aria-label="Obtener cita aleatoria"
+      class="sc-eDvSVe evuQgZ"
+      data-testid="quote-button"
+    >
+      Obtener cita aleatoria
+    </button>
+    <button
+      aria-label="Borrar"
+      class="sc-eDvSVe evzNSN"
+    >
+      Borrar
+    </button>
+  </div>
+</DocumentFragment>
+`;

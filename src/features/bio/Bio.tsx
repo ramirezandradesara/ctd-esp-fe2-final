@@ -1,6 +1,12 @@
 import { useState } from "react";
 import { NombresSimpsons, INFO_SIMPSONS } from "./constants";
-import { BioContainer, BioImagen, ContenedorBotones, BioNombre, BioDescripcion, BotonBioInactivo, BotonBioActivo } from "./styled";
+import {
+  BotonBio,
+  BioContainer,
+  BioImagen,
+  ContenedorBotones,
+  BioNombre, BioDescripcion
+} from "./styled";
 
 const Bio = () => {
   const [bioActiva, setBioActiva] = useState(
@@ -12,17 +18,13 @@ const Bio = () => {
 
   const crearBotones = () => {
     return Object.keys(INFO_SIMPSONS).map((nombre: string) => (
-      bioActiva.id === nombre
-        ? <BotonBioActivo
-          key={nombre as string}
-          onClick={() => onClick(nombre as NombresSimpsons)}>
-          {nombre}
-        </BotonBioActivo>
-        : <BotonBioInactivo
-          key={nombre as string}
-          onClick={() => onClick(nombre as NombresSimpsons)}>
-          {nombre}
-        </BotonBioInactivo>
+      <BotonBio
+        key={nombre as string}
+        onClick={() => onClick(nombre as NombresSimpsons)}
+        active={bioActiva.id === nombre}
+      >
+        {nombre}
+      </BotonBio>
     ));
   };
 

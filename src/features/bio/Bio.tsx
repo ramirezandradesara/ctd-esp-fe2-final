@@ -16,6 +16,11 @@ const Bio = () => {
   const onClick: (nombre: NombresSimpsons) => void = (nombre) =>
     setBioActiva(INFO_SIMPSONS[nombre]);
 
+  /**
+   * Función que renderiza los botones son los nombres de los personajes y 
+   * permite cambiar los estilos del botón del personaje seleccionado.
+   * @returns {HTMLElement}
+   */
   const crearBotones = () => {
     return Object.keys(INFO_SIMPSONS).map((nombre: string) => (
       <BotonBio

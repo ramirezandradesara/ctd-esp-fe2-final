@@ -12,7 +12,8 @@ import {
 } from "./styled";
 import { useNews } from "./hooks/useNews";
 import useModal from "./hooks/useModal";
-import Modal from "./modal/Modal";
+import ModalNotPremium from './modal/ModalNotPremium';
+import ModalPremium from './modal/ModalPremium';
 
 const Noticias = () => {
   const noticias = useNews()
@@ -33,8 +34,13 @@ const Noticias = () => {
             <BotonLectura onClick={() => isOpenModal(noticia)}>Ver más</BotonLectura>
           </TarjetaNoticia>
         ))}
-
-        {modal && <Modal isOpenModal={isOpenModal} modal={modal} />}
+        {modal ?
+                (
+                    modal.esPremium
+                        ? (<ModalPremium isOpenModal={isOpenModal} modal={modal} />)
+                        : (<ModalNotPremium isOpenModal={isOpenModal} modal={modal} />)
+                )
+                : null}
       </ListaNoticias>
     </ContenedorNoticias>
   );

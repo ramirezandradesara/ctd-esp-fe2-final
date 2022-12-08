@@ -1,4 +1,4 @@
-import { act, fireEvent, screen, waitFor } from "@testing-library/react";
+import { fireEvent, screen, waitFor } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import Cita from '../features/quote/Cita'
 import userEvent from "@testing-library/user-event";
@@ -6,7 +6,7 @@ import { customRender } from '../test-utils'
 
 describe("Pruebas en <Cita />", () => {
 
-    let renderComponent = () => customRender(<Cita />)
+    const renderComponent = () => customRender(<Cita />)
 
     test("Renderizado inicial sin cita", async () => {
         renderComponent();
@@ -77,8 +77,8 @@ describe("Pruebas en <Cita />", () => {
     });
 
     test("Snapshot de <Cita />", async () => {
-        let { asFragment } = customRender(<Cita />)
-        let fragment = asFragment()
+        const { asFragment } = customRender(<Cita />)
+        const fragment = asFragment()
 
         expect(fragment).toMatchSnapshot();
     });

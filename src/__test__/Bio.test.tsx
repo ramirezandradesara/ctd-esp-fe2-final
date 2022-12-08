@@ -1,11 +1,11 @@
-import { act, fireEvent, screen, waitFor } from "@testing-library/react";
+import { fireEvent, screen, waitFor } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import { customRender } from '../test-utils'
 import Bio from "../features/bio/Bio";
 
 describe("Pruebas en <Bio />", () => {
 
-    let renderComponent = () => customRender(<Bio />)
+    const renderComponent = () => customRender(<Bio />)
 
     test("Renderizado inicial con el nombre y la biografía de Bart Simpson", async () => {
         renderComponent();
@@ -29,8 +29,8 @@ describe("Pruebas en <Bio />", () => {
     });
 
     test("Snapshot de <Bio />", async () => {
-        let { asFragment } = customRender(<Bio />)
-        let fragment = asFragment()
+        const { asFragment } = customRender(<Bio />)
+        const fragment = asFragment()
 
         expect(fragment).toMatchSnapshot();
     });

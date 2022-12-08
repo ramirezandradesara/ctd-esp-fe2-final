@@ -1,11 +1,11 @@
-import { act, fireEvent, screen, waitFor } from "@testing-library/react";
+import { screen} from "@testing-library/react";
 import "@testing-library/jest-dom";
 import Noticias from '../features/news/Noticias'
 import { customRender } from '../test-utils'
 
 describe("Pruebas en <Noticias />", () => {
 
-    let renderComponent = () => customRender(<Noticias />)
+    const renderComponent = () => customRender(<Noticias />)
 
     test("Renderizado inicial con título", async () => {
         renderComponent();
@@ -14,8 +14,8 @@ describe("Pruebas en <Noticias />", () => {
     });
 
     test("Snapshot de <Noticias />", async () => {
-        let { asFragment } = customRender(<Noticias />)
-        let fragment = asFragment()
+        const { asFragment } = customRender(<Noticias />)
+        const fragment = asFragment()
 
         expect(fragment).toMatchSnapshot();
     });

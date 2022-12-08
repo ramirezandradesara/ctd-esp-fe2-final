@@ -76,7 +76,7 @@ describe("Pruebas en <Cita />", () => {
         await waitFor(() => expect(screen.queryByText("Ingresa el nombre del autor")));
     });
 
-    test("Snapshot de <Noticias />", async () => {
+    test("Snapshot de <Cita />", async () => {
         let { asFragment } = customRender(<Cita />)
         let fragment = asFragment()
 

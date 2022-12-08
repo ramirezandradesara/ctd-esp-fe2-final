@@ -1,6 +1,5 @@
 import { act, fireEvent, screen, waitFor } from "@testing-library/react";
 import "@testing-library/jest-dom";
-import userEvent from "@testing-library/user-event";
 import { customRender } from '../test-utils'
 import Bio from "../features/bio/Bio";
 
@@ -29,7 +28,7 @@ describe("Pruebas en <Cita />", () => {
         await waitFor(() => expect(screen.queryByText(bioHomero)));
     });
 
-    test("Snapshot de <Noticias />", async () => {
+    test("Snapshot de <Bio />", async () => {
         let { asFragment } = customRender(<Bio />)
         let fragment = asFragment()
 

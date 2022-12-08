@@ -1,4 +1,4 @@
-export function eachWordToUppercase(sentence: string) {
+export function firstLetterToUppercase(sentence: string) {
     return sentence
         .split(" ")
         .map((str) => {

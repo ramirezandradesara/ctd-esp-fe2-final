@@ -3,7 +3,7 @@ import "@testing-library/jest-dom";
 import Noticias from '../features/news/Noticias'
 import { customRender } from '../test-utils'
 
-describe("Pruebas en <Cita />", () => {
+describe("Pruebas en <Noticias />", () => {
 
     let renderComponent = () => customRender(<Noticias />)
 

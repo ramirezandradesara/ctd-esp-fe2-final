@@ -1,5 +1,5 @@
 import { obtenerNoticias } from "../fakeRest";
-import { eachWordToUppercase } from "./eachWordToUppercase";
+import { firstLetterToUppercase } from "./firstLetterToUppercase";
 import { minutesElapsed } from "./minutesElapsed";
 
 export async function formatedData() {
@@ -8,7 +8,7 @@ export async function formatedData() {
     const data = respuesta.map((n) => {
         return {
             id: n.id,
-            titulo: eachWordToUppercase(n.titulo),
+            titulo: firstLetterToUppercase(n.titulo),
             descripcion: n.descripcion,
             fecha: `Hace ${minutesElapsed(n.fecha)} minutos`,
             esPremium: n.esPremium,

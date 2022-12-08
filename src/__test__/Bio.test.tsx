@@ -3,7 +3,7 @@ import "@testing-library/jest-dom";
 import { customRender } from '../test-utils'
 import Bio from "../features/bio/Bio";
 
-describe("Pruebas en <Cita />", () => {
+describe("Pruebas en <Bio />", () => {
 
     let renderComponent = () => customRender(<Bio />)
 

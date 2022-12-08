@@ -6,9 +6,9 @@ import {
     ImagenModal,
     TituloModal,
     CotenedorTexto,
-} from "../styled";
-import { CloseButton as Close } from "../../../assets";
-import { ModalProps } from '../types/modalProps.types';
+} from "../../styled";
+import { CloseButton as Close } from "../../../../assets";
+import { ModalProps } from '../../types/modalProps.types';
 
 function ModalNotPremium({modal, isOpenModal }: ModalProps) {
 

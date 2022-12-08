@@ -7,9 +7,9 @@ import {
     TituloModal,
     BotonSuscribir,
     CotenedorTexto,
-} from "../styled";
-import { SuscribeImage, CloseButton as Close } from "../../../assets";
-import { ModalProps } from '../types/modalProps.types';
+} from "../../styled";
+import { SuscribeImage, CloseButton as Close } from "../../../../assets";
+import { ModalProps } from '../../types/modalProps.types';
 
 function ModalPremium({ modal, isOpenModal }: ModalProps) {
 

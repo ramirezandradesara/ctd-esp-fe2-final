@@ -11,7 +11,7 @@ import {
 import { SuscribeImage, CloseButton as Close } from "../../../../assets";
 import { ModalProps } from '../../types/modalProps.types';
 
-function ModalPremium({ modal, isOpenModal }: ModalProps) {
+function ModalPremium({ isOpenModal }: ModalProps) {
 
     return (
         <ContenedorModal>
@@ -39,6 +39,6 @@ function ModalPremium({ modal, isOpenModal }: ModalProps) {
             </TarjetaModal>
         </ContenedorModal>
     )
-};
+}
 
 export default ModalPremium

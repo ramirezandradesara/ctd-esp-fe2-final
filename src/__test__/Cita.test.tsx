@@ -3,6 +3,7 @@ import "@testing-library/jest-dom";
 import Cita from '../features/quote/Cita'
 import userEvent from "@testing-library/user-event";
 import { customRender } from '../test-utils'
+import { act } from "react-dom/test-utils";
 
 describe("Pruebas en <Cita />", () => {
 
@@ -21,7 +22,10 @@ describe("Pruebas en <Cita />", () => {
         const btnAleatorio = screen.getByText("Obtener cita aleatoria");
         expect(btnAleatorio).toBeEnabled();
 
-        userEvent.click(btnAleatorio);
+        act(() => {
+            userEvent.click(btnAleatorio);
+        })
+
         const loading = await screen.findByText('CARGANDO...');
         expect(loading).toBeInTheDocument();
     });
@@ -35,9 +39,10 @@ describe("Pruebas en <Cita />", () => {
 
         expect(input).toBeInTheDocument();
 
-        userEvent.type(input, "Lisa");
-        userEvent.click(btnCita);
-
+        act(() => {
+            userEvent.type(input, "Lisa");
+            userEvent.click(btnCita);
+        })
 
         await waitFor(() => expect(screen.queryByText("Lisa Simpson")));
         await waitFor(() => expect(screen.queryByText("Shut up, brain. I got friends now. I don't need you anymore.")));
@@ -50,8 +55,10 @@ describe("Pruebas en <Cita />", () => {
         const input = await screen.findByPlaceholderText('Ingresa el nombre del autor');
         const btnCita = screen.getByText(/obtener/i);
 
-        userEvent.type(input, "1233");
-        userEvent.click(btnCita);
+        act(() => {
+            userEvent.type(input, "1233");
+            userEvent.click(btnCita);
+        })
 
         await waitFor(() => {
             expect(screen.getByText('Por favor ingrese un nombre válido')).toBeInTheDocument();
@@ -66,12 +73,16 @@ describe("Pruebas en <Cita />", () => {
         const btnBorrar = screen.getByText("Borrar");
         const btnCita = screen.getByText(/obtener/i);
 
-        userEvent.type(input, 'Homer');
-        userEvent.click(btnCita);
+        act(() => {
+            userEvent.type(input, 'Homer');
+            userEvent.click(btnCita);
+        })
 
         await waitFor(() => expect(screen.queryByText("Ingresa el nombre del autor")).not.toBeInTheDocument());
 
-        fireEvent.click(btnBorrar);
+        act(() => {
+            fireEvent.click(btnBorrar);
+        })
 
         await waitFor(() => expect(screen.queryByText("Ingresa el nombre del autor")));
     });

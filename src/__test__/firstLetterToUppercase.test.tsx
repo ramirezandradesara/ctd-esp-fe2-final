@@ -2,7 +2,7 @@ import { waitFor, renderHook } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import { firstLetterToUppercase } from "../features/news/helpers/firstLetterToUppercase";
 
-describe("Pruebas del hook eachWordToUppercase", () => {
+describe("Pruebas del hook firstLetterToUppercase", () => {
 
     test("Funcionamiento correcto del hook", async () => {
 

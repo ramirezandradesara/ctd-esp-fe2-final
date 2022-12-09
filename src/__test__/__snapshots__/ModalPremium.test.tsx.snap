@@ -1,0 +1,218 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Pruebas en <App /> Snapshot de <App /> 1`] = `
+<DocumentFragment>
+  <div
+    class="App"
+  >
+    <header
+      class="App-header"
+    >
+      <img
+        alt="The-Simpsons"
+        class="logo"
+        src="https://cdn.glitch.com/3c3ffadc-3406-4440-bb95-d40ec8fcde72%2Fsimpsons.PNG?1497481539770"
+      />
+      <div
+        class="sc-bcXHqe diInxQ"
+      >
+        <p
+          class="sc-gswNZR csjLMD"
+        >
+          No se encontro ninguna cita
+        </p>
+        <p
+          class="sc-dkrFOg jCtzHW"
+          data-testid="character-name"
+        />
+        <input
+          aria-label="Author Cita"
+          class="sc-hLBbgP itHxqV"
+          placeholder="Ingresa el nombre del autor"
+          value=""
+        />
+        <button
+          aria-label="Obtener cita aleatoria"
+          class="sc-eDvSVe evuQgZ"
+          data-testid="quote-button"
+        >
+          Obtener cita aleatoria
+        </button>
+        <button
+          aria-label="Borrar"
+          class="sc-eDvSVe evzNSN"
+        >
+          Borrar
+        </button>
+      </div>
+    </header>
+    <section
+      class="App-bio"
+    >
+      <div
+        class="sc-jSUZER wWTzV"
+      >
+        <div
+          class="sc-iBYQkv gXckzP"
+        >
+          <button
+            class="sc-jrcTuL jsZOFU"
+          >
+            BART
+          </button>
+          <button
+            class="sc-jrcTuL kghaBV"
+          >
+            HOMERO
+          </button>
+          <button
+            class="sc-jrcTuL kghaBV"
+          >
+            LISA
+          </button>
+          <button
+            class="sc-jrcTuL kghaBV"
+          >
+            MAGGIE
+          </button>
+          <button
+            class="sc-jrcTuL kghaBV"
+          >
+            MARGE
+          </button>
+        </div>
+        <div>
+          <div>
+            <img
+              alt="Bart Simpson"
+              class="sc-gKPRtg gLeODh"
+              src="bart.png"
+            />
+          </div>
+          <div>
+            <h3
+              class="sc-ftTHYK kRhIzK"
+            >
+              Bart Simpson
+            </h3>
+            <p
+              class="sc-pyfCe crdmFf"
+            >
+              A los diez años, Bart es el hijo mayor y único varón de Homero y Marge,
+    y el hermano de Lisa y Maggie.
+    Los rasgos de carácter más prominentes y populares de Bart son su picardía,
+    rebeldía y falta de respeto a la autoridad.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section
+      class="App-news"
+    >
+      <div
+        class="sc-kDvujY dgViHy"
+      >
+        <h2
+          class="sc-ipEyDJ HvnNA"
+        >
+          Noticias de los Simpsons
+        </h2>
+        <div
+          class="sc-csuSiG bfligl"
+        />
+      </div>
+    </section>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Pruebas en <ModalPremium /> Snapshot de <App /> 1`] = `
+<DocumentFragment>
+  <div
+    class="sc-pyfCe htHFCe"
+  >
+    <div
+      class="sc-jrcTuL bcUcgZ"
+    >
+      <button
+        class="sc-kDvujY smStH"
+      >
+        <img
+          alt="close-button"
+          src="close.png"
+        />
+      </button>
+      <img
+        alt="mr-burns-excelent"
+        class="sc-ipEyDJ dQfxvJ"
+        src="suscribe-img.jpg"
+      />
+      <div
+        class="sc-csuSiG fNCZlA"
+      >
+        <h3
+          class="sc-eDWCr NUBFc"
+        >
+          Suscríbete a nuestro Newsletter
+        </h3>
+        <p
+          class="sc-bqWxrE jepWnM"
+        >
+          Suscríbete a nuestro newsletter y recibe noticias de nuestros personajes favoritos.
+        </p>
+        <button
+          class="sc-ksBlkl bDzSpj"
+        >
+          Suscríbete
+        </button>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Pruebas en <ModalPremium /> Snapshot de <ModalPremium /> 1`] = `
+<DocumentFragment>
+  <div
+    class="sc-pyfCe htHFCe"
+  >
+    <div
+      class="sc-jrcTuL bcUcgZ"
+    >
+      <button
+        class="sc-kDvujY smStH"
+      >
+        <img
+          alt="close-button"
+          src="close.png"
+        />
+      </button>
+      <img
+        alt="mr-burns-excelent"
+        class="sc-ipEyDJ dQfxvJ"
+        src="suscribe-img.jpg"
+      />
+      <div
+        class="sc-csuSiG fNCZlA"
+      >
+        <h3
+          class="sc-eDWCr NUBFc"
+        >
+          Suscríbete a nuestro Newsletter
+        </h3>
+        <p
+          class="sc-bqWxrE jepWnM"
+        >
+          Suscríbete a nuestro newsletter y recibe noticias de nuestros personajes favoritos.
+        </p>
+        <button
+          class="sc-ksBlkl bDzSpj"
+        >
+          Suscríbete
+        </button>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
